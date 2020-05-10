@@ -5892,10 +5892,10 @@ gatsby-recipes@^0.1.14:
     ws "^7.2.5"
     xstate "^4.9.1"
 
-gatsby-source-crane@0.1.0-alpha.1:
-  version "0.1.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/gatsby-source-crane/-/gatsby-source-crane-0.1.0-alpha.1.tgz#8c48680abaac6b878dd7ed4461b99c0edd20d4aa"
-  integrity sha512-RvDkGTRJxCvRhyODfYjMxvEeOtoPfLtA0dSy7VK5xuQNy9YfVMT1sfwNV7Npt7y/uPbkFqOxZ6h2yGkKVdJjZw==
+gatsby-source-crane@0.1.0-alpha.2:
+  version "0.1.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/gatsby-source-crane/-/gatsby-source-crane-0.1.0-alpha.2.tgz#375f885bbde30613d286880cdda9d0864decf571"
+  integrity sha512-vcGnwdoAaAa5MITo8pZkMkFkz3mhCIKdJ3qD4om5xXCBc6f8eyPlfIY/Wh1zqOfZujS0MUqnkP9YgQcieByyLw==
   dependencies:
     axios "^0.19.2"
     gatsby-node-helpers "^0.3.0"
