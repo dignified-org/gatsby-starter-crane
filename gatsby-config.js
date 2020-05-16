@@ -19,11 +19,11 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: 'gatsby-source-crane',
+      resolve: 'gatsby-source-shopify-incremental',
       options: {
-        shopName: process.env.SHOP_NAME,
-        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
-        adminToken: process.env.SHOPIFY_ADMIN_TOKEN,
+        myshopifyDomain: process.env.SHOP_NAME,
+        storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN,
+        adminAccessToken: process.env.SHOPIFY_ADMIN_TOKEN,
       },
     },
     {
