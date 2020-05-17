@@ -46,7 +46,7 @@ const IndexPage = ({ data }) => {
               return (
               <div key={product.id} className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
               <Link to={`/product/${product.handle}`}>
-                  <img className="hover:grow hover:shadow-lg" src={product.images.edges[0].node.originalSrc} />
+                  {product.images.edges[0] && <img className="hover:grow hover:shadow-lg" src={product.images.edges[0].node.originalSrc} />}
                   <div className="pt-3 flex items-center justify-between">
                       <p className="">{product.title}</p>
                       <svg className="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

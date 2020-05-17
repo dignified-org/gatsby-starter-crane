@@ -4,8 +4,6 @@ import { FormattedNumber } from 'react-intl';
 import Layout from '../components/layout';
 
 function ProductPage({ data }) {
-  console.log(data);
-
   const product = data.shopifyProduct
 
   const { minVariantPrice, maxVariantPrice } = product.priceRange;
