@@ -1,19 +1,13 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { graphql, Link } from 'gatsby'
+import { FormattedNumber } from 'react-intl';
+import Layout from '../components/layout';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
-import { FormattedNumber } from "react-intl"
-
-const IndexPage = ({ data }) => {
-  const products = data.allShopifyProduct.edges.map(edge => edge.node);
-
-
+function CollectionPage({ data }) {
+  const collection = data.shopifyCollection
 
   return (
     <Layout>
-      <SEO title="Home" />
       <section className="bg-white py-8">
 
         <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
@@ -37,15 +31,16 @@ const IndexPage = ({ data }) => {
                             </svg>
                         </a>
 
+
                     </div>
               </div>
             </nav>
-            {products.map(product => {
+            {collection.products.map(product => {
               const { minVariantPrice, maxVariantPrice } = product.priceRange;
               
               return (
               <div key={product.id} className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-              <Link to={`/products/${product.handle}`}>
+              <Link to={`/collections/${collection.handle}/products/${product.handle}`}>
                   {product.images.edges[0] && <img className="hover:grow hover:shadow-lg" src={product.images.edges[0].node.originalSrc} />}
                   <div className="pt-3 flex items-center justify-between">
                       <p className="">{product.title}</p>
@@ -62,47 +57,46 @@ const IndexPage = ({ data }) => {
               </Link>
           </div>
             )})}
-
-            
-
-            </div>
-
+        </div>
     </section>
     </Layout>
   );
 }
-  
 
 export const query = graphql`
-query MyQuery {
-  allShopifyProduct (limit: 20, sort:{ fields:updatedAt, order: DESC }) {
-    edges {
-      node {
-        id
-        handle
-        title
-        priceRange {
-          minVariantPrice {
-            amount
-            currencyCode
-          }
-          maxVariantPrice {
-            amount
-            currencyCode
-          }
+  query($handle: String!) {
+    shopifyCollection(handle: { eq: $handle }) {
+      id
+      handle
+    image {
+      id
+      originalSrc
+    }
+    products {
+      id
+      handle
+      title
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
         }
-        images {
-          edges {
-            node {
-              id
-              originalSrc
-            }
+        maxVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+      images {
+        edges {
+          node {
+            id
+            originalSrc
           }
         }
       }
     }
+    }
   }
-}
-`;
+`
 
-export default IndexPage
+export default CollectionPage
